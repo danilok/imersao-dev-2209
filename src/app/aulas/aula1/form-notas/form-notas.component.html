@@ -1,0 +1,118 @@
+<div class="w-[400px] block mx-auto">
+  <form
+    [formGroup]="notasForm"
+    (submit)="calcularMedia()"
+    class="pt-5 flex align-items justify-center flex-col gap-1"
+  >
+    <div class="form-input bg-slate-300 bg-opacity-75">
+      <label class="mr-[4.5em]" for="primeiro">Nome:</label>
+      <input
+        tabindex="1"
+        type="text"
+        formControlName="nome"
+        id="nome"
+        class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-left"
+      />
+      <app-form-mensagem
+        *ngIf="notasForm.get('nome')?.errors?.['required'] && notasForm.get('nome')?.touched"
+        mensagem="Nome é obrigatório."
+      ></app-form-mensagem>
+    </div>
+    <div class="form-input bg-slate-300 bg-opacity-75">
+      <label class="mr-2" for="primeiro">1º bimestre:</label>
+      <input
+        tabindex="1"
+        type="number"
+        formControlName="primeiro"
+        id="primeiro"
+        class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-right"
+      />
+      <app-form-mensagem
+        *ngIf="notasForm.get('primeiro')?.errors?.['min']"
+        mensagem="Nota mínima é 0."
+      ></app-form-mensagem>
+      <app-form-mensagem
+        *ngIf="notasForm.get('primeiro')?.errors?.['max']"
+        mensagem="Nota máxima é 10."
+      ></app-form-mensagem>
+    </div>
+    <div class="form-input bg-slate-300 bg-opacity-75">
+      <label class="mr-2" for="segundo">2º bimestre:</label>
+      <input
+        tabindex="2"
+        type="number"
+        formControlName="segundo"
+        id="segundo"
+        class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-right"
+      />
+      <app-form-mensagem
+        *ngIf="notasForm.get('segundo')?.errors?.['min']"
+        mensagem="Nota mínima é 0."
+      ></app-form-mensagem>
+      <app-form-mensagem
+        *ngIf="notasForm.get('segundo')?.errors?.['max']"
+        mensagem="Nota máxima é 10."
+      ></app-form-mensagem>
+    </div>
+    <div class="form-input bg-slate-300 bg-opacity-75">
+      <label class="mr-2" for="terceiro">3º bimestre:</label>
+      <input
+        tabindex="3"
+        type="number"
+        formControlName="terceiro"
+        id="terceiro"
+        class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-right"
+      />
+      <app-form-mensagem
+        *ngIf="notasForm.get('terceiro')?.errors?.['min']"
+        mensagem="Nota mínima é 0."
+      ></app-form-mensagem>
+      <app-form-mensagem
+        *ngIf="notasForm.get('terceiro')?.errors?.['max']"
+        mensagem="Nota máxima é 10."
+      ></app-form-mensagem>
+    </div>
+    <div class="form-input bg-slate-300 bg-opacity-75">
+      <label class="mr-2" for="quarto">4º bimestre:</label>
+      <input
+        tabindex="4"
+        type="number"
+        formControlName="quarto"
+        id="quarto"
+        class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-right"
+      />
+      <app-form-mensagem
+        *ngIf="notasForm.get('quarto')?.errors?.['min']"
+        mensagem="Nota mínima é 0."
+      ></app-form-mensagem>
+      <app-form-mensagem
+        *ngIf="notasForm.get('quarto')?.errors?.['max']"
+        mensagem="Nota máxima é 10."
+      ></app-form-mensagem>
+    </div>
+    <div>
+      <button
+        tabindex="5"
+        [disabled]="notasForm.invalid"
+        type="submit"
+        class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-600 mt-5 py-2 px-4 text-sm font-bold text-white hover:bg-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 disabled:bg-gray-400"
+      >
+        Calcular média
+      </button>
+    </div>
+  </form>
+</div>
+<div
+  class="block mx-auto mt-5 align-center w-fit flex align-items justify-center rounded-md p-2.5 bg-slate-300 bg-opacity-75"
+>
+  <p *ngIf="calculado; else info">
+    Olá {{ notasForm.get('nome')?.value }}! A sua média foi {{ media }}!<br />
+    Resultado final:
+    <span [class]="classeAprovacao">{{
+      aprovado ? 'aprovado ✔️' : 'reprovado ❌'
+    }}</span>
+  </p>
+  <ng-template #info>
+    <p>Insira as notas e clique no botão para saber a sua média!</p>
+  </ng-template>
+</div>
