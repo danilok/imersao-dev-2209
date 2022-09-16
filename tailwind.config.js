@@ -9,4 +9,10 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
   ],
+  content: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      './src/**/*.{html,ts}',
+    ]
+  },
 }

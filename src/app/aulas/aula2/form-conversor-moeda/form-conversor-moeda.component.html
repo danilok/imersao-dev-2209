@@ -1,0 +1,39 @@
+<div class="flex flex-col items-center justify-center">
+  <form
+    [formGroup]="conversorForm"
+    (submit)="converter()"
+    class="flex flex-col items-center justify-center"
+  >
+    <label for="moeda" class="text-white">Insira o valor em dólar</label><br />
+    <input
+      type="number"
+      id="valor"
+      size="2"
+      tabindex="1"
+      formControlName="valor"
+      min="0"
+      class="rounded-md border-gray-300 focus:border-teal-300 focus:ring-teal-300 sm:text-sm text-right"
+    /><br />
+    <button
+      tabindex="2"
+      type="submit"
+      class="form-button"
+      [disabled]="conversorForm.invalid"
+      *ngIf="!resultado"
+    >
+      Converter
+    </button>
+    <button
+      type="button"
+      (click)="resetForm()"
+      *ngIf="!!resultado"
+      class="form-button"
+    >
+      Reiniciar
+    </button>
+  </form>
+  <br />
+  <h2 id="valorConvertido" class="block text-white text-3xl">
+    {{ resultado }}
+  </h2>
+</div>

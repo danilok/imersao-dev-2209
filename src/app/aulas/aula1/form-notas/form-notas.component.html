@@ -95,9 +95,18 @@
         tabindex="5"
         [disabled]="notasForm.invalid"
         type="submit"
+        *ngIf="!calculado"
         class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-600 mt-5 py-2 px-4 text-sm font-bold text-white hover:bg-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 disabled:bg-gray-400"
       >
         Calcular média
+      </button>
+      <button
+        type="button"
+        (click)="resetForm()"
+        *ngIf="!!calculado"
+        class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-600 mt-5 py-2 px-4 text-sm font-bold text-white hover:bg-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 disabled:bg-gray-400"
+      >
+        Reiniciar
       </button>
     </div>
   </form>

@@ -46,4 +46,15 @@ export class FormNotasComponent implements OnInit {
     this.media = media.toFixed(2);
     this.calculado = true;
   }
+
+  public resetForm(): void {
+    this.calculado = false;
+    this.notasForm.reset({
+      nome: '',
+      primeiro: 0,
+      segundo: 0,
+      terceiro: 0,
+      quarto: 0
+    });
+  }
 }

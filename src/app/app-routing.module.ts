@@ -14,6 +14,11 @@ const routes: Routes = [
       import('./aulas/aula1/aula1.module').then((m) => m.Aula1Module)
   },
   {
+    path: 'aulas/2',
+    loadChildren: () =>
+      import('./aulas/aula2/aula2.module').then((m) => m.Aula2Module)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
